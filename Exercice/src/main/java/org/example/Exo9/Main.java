@@ -1,4 +1,4 @@
-package org.example.Exo8;
+package org.example.Exo9;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -17,10 +17,11 @@ public class Main {
     private static Thread[] createAtomicThreads(){
         Thread[] threads = new Thread[10];
         for (int i = 0; i < 10; i++) {
+            int finalI = i;
             threads[i] = new Thread(() -> {
-                for (int j = 0; j < 1000; j++) {
                     atomicInteger.incrementAndGet();
-                }
+                System.out.println(threads[finalI].getName()+" a incrémenté le compteur à " +atomicInteger);
+
             });
         }
         return threads;
